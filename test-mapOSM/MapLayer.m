@@ -55,8 +55,14 @@
                               @"url" : @"http://c.tile.thunderforest.com/cycle/{z}/{x}/{y}.png",
                               @"title" : @"OSM Cyclo",
                               @"id" : @"osmcyclo"
+                              },
+                          @{
+                              @"url" : @"http://mt0.google.com/vt/x={x}&y={y}&z={z}",
+                              @"title" : @"Google 1",
+                              @"id" : @"google1"
                               }
                           ];
+        
         
         for (NSDictionary *dic in temp) {
             MapLayer *mapLayer = [MapLayer mapWithId:dic[@"id"]];
