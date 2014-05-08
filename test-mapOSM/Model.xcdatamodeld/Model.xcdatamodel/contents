@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Feature" representedClassName="Feature" syncable="YES">
+        <attribute name="o_lat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="o_lon" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="o_text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="o_title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="layer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FeaturesLayer" inverseName="features" inverseEntity="FeaturesLayer" syncable="YES"/>
+        <relationship name="tag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" syncable="YES"/>
+    </entity>
+    <entity name="FeaturesLayer" representedClassName="FeaturesLayer" syncable="YES">
+        <attribute name="o_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="o_isActive" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="o_source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="o_text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="o_title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="features" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Feature" inverseName="layer" inverseEntity="Feature" syncable="YES"/>
+    </entity>
+    <entity name="MapLayer" representedClassName="MapLayer" syncable="YES">
+        <attribute name="o_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="o_isActive" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="o_source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="o_text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="o_title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="o_urlTile" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" syncable="YES"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
+        <attribute name="o_title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Test" representedClassName="Test" syncable="YES">
+        <attribute name="attribute" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
+    <entity name="Track" representedClassName="Track" syncable="YES">
+        <attribute name="o_points" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="tag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Feature" positionX="-36" positionY="9" width="128" height="133"/>
+        <element name="FeaturesLayer" positionX="-54" positionY="-9" width="128" height="133"/>
+        <element name="MapLayer" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="Tag" positionX="0" positionY="36" width="128" height="58"/>
+        <element name="Track" positionX="-18" positionY="18" width="128" height="75"/>
+        <element name="Test" positionX="-27" positionY="54" width="128" height="58"/>
+    </elements>
+</model>

@@ -1,0 +1,672 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		68821ADD1914D508009927DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68821ADC1914D508009927DB /* Foundation.framework */; };
+		68821ADF1914D508009927DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68821ADE1914D508009927DB /* CoreGraphics.framework */; };
+		68821AE11914D508009927DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68821AE01914D508009927DB /* UIKit.framework */; };
+		68821AE71914D508009927DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68821AE51914D508009927DB /* InfoPlist.strings */; };
+		68821AE91914D508009927DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68821AE81914D508009927DB /* main.m */; };
+		68821AED1914D508009927DB /* MOBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68821AEC1914D508009927DB /* MOBAppDelegate.m */; };
+		68821AF01914D508009927DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68821AEE1914D508009927DB /* Main.storyboard */; };
+		68821AF51914D508009927DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68821AF41914D508009927DB /* Images.xcassets */; };
+		68821AFC1914D508009927DB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68821AFB1914D508009927DB /* XCTest.framework */; };
+		68821AFD1914D508009927DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68821ADC1914D508009927DB /* Foundation.framework */; };
+		68821AFE1914D508009927DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68821AE01914D508009927DB /* UIKit.framework */; };
+		68821B061914D508009927DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68821B041914D508009927DB /* InfoPlist.strings */; };
+		68821B081914D508009927DB /* test_mapOSMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68821B071914D508009927DB /* test_mapOSMTests.m */; };
+		68B1F5CE191BBA4700C18C8A /* MOBTileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5CD191BBA4700C18C8A /* MOBTileOverlay.m */; };
+		68B1F5D3191BE88500C18C8A /* KMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5D2191BE88500C18C8A /* KMLParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		68B1F5D5191BE91400C18C8A /* aaa.kml in Resources */ = {isa = PBXBuildFile; fileRef = 68B1F5D4191BE91400C18C8A /* aaa.kml */; };
+		68B1F5DB191BF51E00C18C8A /* MOBMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5DA191BF51E00C18C8A /* MOBMapViewController.m */; };
+		68B1F5DE191BF53500C18C8A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5DC191BF53500C18C8A /* Model.xcdatamodeld */; };
+		68B1F5E1191BF8E000C18C8A /* MapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5E0191BF8E000C18C8A /* MapLayer.m */; };
+		68B1F5E4191BF8E100C18C8A /* Feature.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5E3191BF8E100C18C8A /* Feature.m */; };
+		68B1F5E7191BF8E100C18C8A /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5E6191BF8E100C18C8A /* Tag.m */; };
+		68B1F5EA191BF8E100C18C8A /* FeaturesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5E9191BF8E100C18C8A /* FeaturesLayer.m */; };
+		68B1F5ED191BF8E100C18C8A /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5EC191BF8E100C18C8A /* Track.m */; };
+		68C28A3F191C076300638A18 /* MOBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A3E191C076300638A18 /* MOBConstants.m */; };
+		68C28A42191C0E5300638A18 /* MOBMapLayersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A41191C0E5300638A18 /* MOBMapLayersTableViewController.m */; };
+		68C28A45191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A44191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.m */; };
+		68C28A48191C2E9200638A18 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A47191C2E9200638A18 /* Test.m */; };
+		68C28A4D191C4D1000638A18 /* MOBAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A4A191C4D1000638A18 /* MOBAccount.m */; };
+		68C28A4E191C4D1000638A18 /* MOBDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A4C191C4D1000638A18 /* MOBDataManager.m */; };
+		D9FA0B8E1920412DB2725276 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C6C4182A784702963EF5A4 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		68821AFF1914D508009927DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68821AD11914D508009927DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68821AD81914D508009927DB;
+			remoteInfo = "test-mapOSM";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		26C6C4182A784702963EF5A4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		68821AD91914D508009927DB /* MapViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68821ADC1914D508009927DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		68821ADE1914D508009927DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		68821AE01914D508009927DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		68821AE41914D508009927DB /* MapViewer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MapViewer-Info.plist"; sourceTree = "<group>"; };
+		68821AE61914D508009927DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		68821AE81914D508009927DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		68821AEA1914D508009927DB /* MapViewer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MapViewer-Prefix.pch"; sourceTree = "<group>"; };
+		68821AEB1914D508009927DB /* MOBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOBAppDelegate.h; sourceTree = "<group>"; };
+		68821AEC1914D508009927DB /* MOBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOBAppDelegate.m; sourceTree = "<group>"; };
+		68821AEF1914D508009927DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		68821AF41914D508009927DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		68821AFA1914D508009927DB /* MapViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68821AFB1914D508009927DB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		68821B031914D508009927DB /* MapViewerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MapViewerTests-Info.plist"; sourceTree = "<group>"; };
+		68821B051914D508009927DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		68821B071914D508009927DB /* test_mapOSMTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = test_mapOSMTests.m; sourceTree = "<group>"; };
+		68B1F5CC191BBA4700C18C8A /* MOBTileOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBTileOverlay.h; sourceTree = "<group>"; };
+		68B1F5CD191BBA4700C18C8A /* MOBTileOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBTileOverlay.m; sourceTree = "<group>"; };
+		68B1F5D1191BE88500C18C8A /* KMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMLParser.h; sourceTree = "<group>"; };
+		68B1F5D2191BE88500C18C8A /* KMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMLParser.m; sourceTree = "<group>"; };
+		68B1F5D4191BE91400C18C8A /* aaa.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = aaa.kml; sourceTree = "<group>"; };
+		68B1F5D9191BF51E00C18C8A /* MOBMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBMapViewController.h; sourceTree = "<group>"; };
+		68B1F5DA191BF51E00C18C8A /* MOBMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBMapViewController.m; sourceTree = "<group>"; };
+		68B1F5DD191BF53500C18C8A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		68B1F5DF191BF8E000C18C8A /* MapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLayer.h; sourceTree = "<group>"; };
+		68B1F5E0191BF8E000C18C8A /* MapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLayer.m; sourceTree = "<group>"; };
+		68B1F5E2191BF8E100C18C8A /* Feature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feature.h; sourceTree = "<group>"; };
+		68B1F5E3191BF8E100C18C8A /* Feature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feature.m; sourceTree = "<group>"; };
+		68B1F5E5191BF8E100C18C8A /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
+		68B1F5E6191BF8E100C18C8A /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
+		68B1F5E8191BF8E100C18C8A /* FeaturesLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeaturesLayer.h; sourceTree = "<group>"; };
+		68B1F5E9191BF8E100C18C8A /* FeaturesLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeaturesLayer.m; sourceTree = "<group>"; };
+		68B1F5EB191BF8E100C18C8A /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		68B1F5EC191BF8E100C18C8A /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
+		68C28A3D191C076300638A18 /* MOBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBConstants.h; sourceTree = "<group>"; };
+		68C28A3E191C076300638A18 /* MOBConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBConstants.m; sourceTree = "<group>"; };
+		68C28A40191C0E5300638A18 /* MOBMapLayersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBMapLayersTableViewController.h; sourceTree = "<group>"; };
+		68C28A41191C0E5300638A18 /* MOBMapLayersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBMapLayersTableViewController.m; sourceTree = "<group>"; };
+		68C28A43191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBFeaturesLayersTableViewController.h; sourceTree = "<group>"; };
+		68C28A44191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBFeaturesLayersTableViewController.m; sourceTree = "<group>"; };
+		68C28A46191C2E9200638A18 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
+		68C28A47191C2E9200638A18 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
+		68C28A49191C4D1000638A18 /* MOBAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MOBAccount.h; path = ../../shared/Basic/MOBAccount.h; sourceTree = "<group>"; };
+		68C28A4A191C4D1000638A18 /* MOBAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MOBAccount.m; path = ../../shared/Basic/MOBAccount.m; sourceTree = "<group>"; };
+		68C28A4B191C4D1000638A18 /* MOBDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MOBDataManager.h; path = ../../shared/Basic/MOBDataManager.h; sourceTree = "<group>"; };
+		68C28A4C191C4D1000638A18 /* MOBDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MOBDataManager.m; path = ../../shared/Basic/MOBDataManager.m; sourceTree = "<group>"; };
+		D7E30A3F147347A5A2F07EAE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		68821AD61914D508009927DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68821ADF1914D508009927DB /* CoreGraphics.framework in Frameworks */,
+				68821AE11914D508009927DB /* UIKit.framework in Frameworks */,
+				68821ADD1914D508009927DB /* Foundation.framework in Frameworks */,
+				D9FA0B8E1920412DB2725276 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68821AF71914D508009927DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68821AFC1914D508009927DB /* XCTest.framework in Frameworks */,
+				68821AFE1914D508009927DB /* UIKit.framework in Frameworks */,
+				68821AFD1914D508009927DB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		68821AD01914D508009927DB = {
+			isa = PBXGroup;
+			children = (
+				68C28A46191C2E9200638A18 /* Test.h */,
+				68C28A47191C2E9200638A18 /* Test.m */,
+				68821AE21914D508009927DB /* test-mapOSM */,
+				68821B011914D508009927DB /* test-mapOSMTests */,
+				68821ADB1914D508009927DB /* Frameworks */,
+				68821ADA1914D508009927DB /* Products */,
+				D7E30A3F147347A5A2F07EAE /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		68821ADA1914D508009927DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				68821AD91914D508009927DB /* MapViewer.app */,
+				68821AFA1914D508009927DB /* MapViewerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		68821ADB1914D508009927DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68821ADC1914D508009927DB /* Foundation.framework */,
+				68821ADE1914D508009927DB /* CoreGraphics.framework */,
+				68821AE01914D508009927DB /* UIKit.framework */,
+				68821AFB1914D508009927DB /* XCTest.framework */,
+				26C6C4182A784702963EF5A4 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		68821AE21914D508009927DB /* test-mapOSM */ = {
+			isa = PBXGroup;
+			children = (
+				68B1F5EE191C04DE00C18C8A /* common */,
+				68B1F5D8191BF4F800C18C8A /* controller */,
+				68B1F5D7191BF4F300C18C8A /* view */,
+				68B1F5D6191BF4EB00C18C8A /* model */,
+				68B1F5C7191BB9D000C18C8A /* map */,
+				68821AEB1914D508009927DB /* MOBAppDelegate.h */,
+				68821AEC1914D508009927DB /* MOBAppDelegate.m */,
+				68821AF41914D508009927DB /* Images.xcassets */,
+				68821AE31914D508009927DB /* Supporting Files */,
+			);
+			path = "test-mapOSM";
+			sourceTree = "<group>";
+		};
+		68821AE31914D508009927DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				68C28A3D191C076300638A18 /* MOBConstants.h */,
+				68C28A3E191C076300638A18 /* MOBConstants.m */,
+				68B1F5D4191BE91400C18C8A /* aaa.kml */,
+				68821AE41914D508009927DB /* MapViewer-Info.plist */,
+				68821AE51914D508009927DB /* InfoPlist.strings */,
+				68821AE81914D508009927DB /* main.m */,
+				68821AEA1914D508009927DB /* MapViewer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		68821B011914D508009927DB /* test-mapOSMTests */ = {
+			isa = PBXGroup;
+			children = (
+				68821B071914D508009927DB /* test_mapOSMTests.m */,
+				68821B021914D508009927DB /* Supporting Files */,
+			);
+			path = "test-mapOSMTests";
+			sourceTree = "<group>";
+		};
+		68821B021914D508009927DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				68821B031914D508009927DB /* MapViewerTests-Info.plist */,
+				68821B041914D508009927DB /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		68B1F5C7191BB9D000C18C8A /* map */ = {
+			isa = PBXGroup;
+			children = (
+				68B1F5D1191BE88500C18C8A /* KMLParser.h */,
+				68B1F5D2191BE88500C18C8A /* KMLParser.m */,
+				68B1F5CC191BBA4700C18C8A /* MOBTileOverlay.h */,
+				68B1F5CD191BBA4700C18C8A /* MOBTileOverlay.m */,
+			);
+			name = map;
+			sourceTree = "<group>";
+		};
+		68B1F5D6191BF4EB00C18C8A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				68B1F5DC191BF53500C18C8A /* Model.xcdatamodeld */,
+				68B1F5EB191BF8E100C18C8A /* Track.h */,
+				68B1F5EC191BF8E100C18C8A /* Track.m */,
+				68B1F5E8191BF8E100C18C8A /* FeaturesLayer.h */,
+				68B1F5E9191BF8E100C18C8A /* FeaturesLayer.m */,
+				68B1F5E5191BF8E100C18C8A /* Tag.h */,
+				68B1F5E6191BF8E100C18C8A /* Tag.m */,
+				68B1F5E2191BF8E100C18C8A /* Feature.h */,
+				68B1F5E3191BF8E100C18C8A /* Feature.m */,
+				68B1F5DF191BF8E000C18C8A /* MapLayer.h */,
+				68B1F5E0191BF8E000C18C8A /* MapLayer.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		68B1F5D7191BF4F300C18C8A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				68821AEE1914D508009927DB /* Main.storyboard */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		68B1F5D8191BF4F800C18C8A /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				68B1F5D9191BF51E00C18C8A /* MOBMapViewController.h */,
+				68B1F5DA191BF51E00C18C8A /* MOBMapViewController.m */,
+				68C28A40191C0E5300638A18 /* MOBMapLayersTableViewController.h */,
+				68C28A41191C0E5300638A18 /* MOBMapLayersTableViewController.m */,
+				68C28A43191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.h */,
+				68C28A44191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		68B1F5EE191C04DE00C18C8A /* common */ = {
+			isa = PBXGroup;
+			children = (
+				68C28A49191C4D1000638A18 /* MOBAccount.h */,
+				68C28A4A191C4D1000638A18 /* MOBAccount.m */,
+				68C28A4B191C4D1000638A18 /* MOBDataManager.h */,
+				68C28A4C191C4D1000638A18 /* MOBDataManager.m */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		68821AD81914D508009927DB /* MapViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68821B0B1914D508009927DB /* Build configuration list for PBXNativeTarget "MapViewer" */;
+			buildPhases = (
+				491C2C988FE942AFAEC194EB /* Check Pods Manifest.lock */,
+				68821AD51914D508009927DB /* Sources */,
+				68821AD61914D508009927DB /* Frameworks */,
+				68821AD71914D508009927DB /* Resources */,
+				96DB43CA5D6A4032AD06DA90 /* Copy Pods Resources */,
+				68C28A4F191C4DD500638A18 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MapViewer;
+			productName = "test-mapOSM";
+			productReference = 68821AD91914D508009927DB /* MapViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		68821AF91914D508009927DB /* MapViewerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68821B0E1914D508009927DB /* Build configuration list for PBXNativeTarget "MapViewerTests" */;
+			buildPhases = (
+				68821AF61914D508009927DB /* Sources */,
+				68821AF71914D508009927DB /* Frameworks */,
+				68821AF81914D508009927DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				68821B001914D508009927DB /* PBXTargetDependency */,
+			);
+			name = MapViewerTests;
+			productName = "test-mapOSMTests";
+			productReference = 68821AFA1914D508009927DB /* MapViewerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		68821AD11914D508009927DB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MOB;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Mobera;
+				TargetAttributes = {
+					68821AF91914D508009927DB = {
+						TestTargetID = 68821AD81914D508009927DB;
+					};
+				};
+			};
+			buildConfigurationList = 68821AD41914D508009927DB /* Build configuration list for PBXProject "MapViewer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 68821AD01914D508009927DB;
+			productRefGroup = 68821ADA1914D508009927DB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				68821AD81914D508009927DB /* MapViewer */,
+				68821AF91914D508009927DB /* MapViewerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		68821AD71914D508009927DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68B1F5D5191BE91400C18C8A /* aaa.kml in Resources */,
+				68821AF51914D508009927DB /* Images.xcassets in Resources */,
+				68821AE71914D508009927DB /* InfoPlist.strings in Resources */,
+				68821AF01914D508009927DB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68821AF81914D508009927DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68821B061914D508009927DB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		491C2C988FE942AFAEC194EB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		68C28A4F191C4DD500638A18 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 69863faf3346ba912dbfd7b3287d102f291d6060 dc2bc57b1ab09ab683c08844f623e843e6b549d6f021893ce3a9ee5899dc9fa2";
+		};
+		96DB43CA5D6A4032AD06DA90 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		68821AD51914D508009927DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68B1F5E1191BF8E000C18C8A /* MapLayer.m in Sources */,
+				68B1F5E4191BF8E100C18C8A /* Feature.m in Sources */,
+				68C28A4D191C4D1000638A18 /* MOBAccount.m in Sources */,
+				68821AE91914D508009927DB /* main.m in Sources */,
+				68C28A48191C2E9200638A18 /* Test.m in Sources */,
+				68B1F5ED191BF8E100C18C8A /* Track.m in Sources */,
+				68C28A45191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.m in Sources */,
+				68C28A4E191C4D1000638A18 /* MOBDataManager.m in Sources */,
+				68B1F5CE191BBA4700C18C8A /* MOBTileOverlay.m in Sources */,
+				68C28A42191C0E5300638A18 /* MOBMapLayersTableViewController.m in Sources */,
+				68C28A3F191C076300638A18 /* MOBConstants.m in Sources */,
+				68B1F5EA191BF8E100C18C8A /* FeaturesLayer.m in Sources */,
+				68B1F5E7191BF8E100C18C8A /* Tag.m in Sources */,
+				68B1F5D3191BE88500C18C8A /* KMLParser.m in Sources */,
+				68B1F5DE191BF53500C18C8A /* Model.xcdatamodeld in Sources */,
+				68B1F5DB191BF51E00C18C8A /* MOBMapViewController.m in Sources */,
+				68821AED1914D508009927DB /* MOBAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68821AF61914D508009927DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68821B081914D508009927DB /* test_mapOSMTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		68821B001914D508009927DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68821AD81914D508009927DB /* MapViewer */;
+			targetProxy = 68821AFF1914D508009927DB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		68821AE51914D508009927DB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68821AE61914D508009927DB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		68821AEE1914D508009927DB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68821AEF1914D508009927DB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		68821B041914D508009927DB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68821B051914D508009927DB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		68821B091914D508009927DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		68821B0A1914D508009927DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		68821B0C1914D508009927DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7E30A3F147347A5A2F07EAE /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "test-mapOSM/MapViewer-Prefix.pch";
+				INFOPLIST_FILE = "test-mapOSM/MapViewer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = MapViewer;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		68821B0D1914D508009927DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7E30A3F147347A5A2F07EAE /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "test-mapOSM/MapViewer-Prefix.pch";
+				INFOPLIST_FILE = "test-mapOSM/MapViewer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = MapViewer;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		68821B0F1914D508009927DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/test-mapOSM.app/test-mapOSM";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "test-mapOSM/test-mapOSM-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "test-mapOSMTests/MapViewerTests-Info.plist";
+				PRODUCT_NAME = MapViewerTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		68821B101914D508009927DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/test-mapOSM.app/test-mapOSM";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "test-mapOSM/test-mapOSM-Prefix.pch";
+				INFOPLIST_FILE = "test-mapOSMTests/MapViewerTests-Info.plist";
+				PRODUCT_NAME = MapViewerTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		68821AD41914D508009927DB /* Build configuration list for PBXProject "MapViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68821B091914D508009927DB /* Debug */,
+				68821B0A1914D508009927DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68821B0B1914D508009927DB /* Build configuration list for PBXNativeTarget "MapViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68821B0C1914D508009927DB /* Debug */,
+				68821B0D1914D508009927DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68821B0E1914D508009927DB /* Build configuration list for PBXNativeTarget "MapViewerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68821B0F1914D508009927DB /* Debug */,
+				68821B101914D508009927DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		68B1F5DC191BF53500C18C8A /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				68B1F5DD191BF53500C18C8A /* Model.xcdatamodel */,
+			);
+			currentVersion = 68B1F5DD191BF53500C18C8A /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 68821AD11914D508009927DB /* Project object */;
+}
