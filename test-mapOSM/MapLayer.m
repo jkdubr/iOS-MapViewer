@@ -45,6 +45,7 @@
 + (RACSignal *)reloadData
 {
     return  [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
+        //http://www.neongeo.com/wiki/doku.php?id=map_servers
         NSArray *temp = @[
                           @{
                               @"url" : @"http://tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -60,9 +61,15 @@
                               @"url" : @"http://mt0.google.com/vt/x={x}&y={y}&z={z}",
                               @"title" : @"Google 1",
                               @"id" : @"google1"
+                              },
+                          @{
+                              @"url" : @"http://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
+                              @"title" : @"Google Hybrid",
+                              @"id" : @"googleh"
                               }
                           ];
         
+        //
         
         for (NSDictionary *dic in temp) {
             MapLayer *mapLayer = [MapLayer mapWithId:dic[@"id"]];

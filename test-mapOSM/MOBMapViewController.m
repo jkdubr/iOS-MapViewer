@@ -74,7 +74,7 @@ int lat2tiley(double lat, int z)
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
     [self.fetchedResultsController setDelegate:self];
-
+    
     
     
     
@@ -100,10 +100,10 @@ int lat2tiley(double lat, int z)
     
     
     //TODO: for testing purpose
-   // NSString *path = [[NSBundle mainBundle] pathForResource:@"aaa" ofType:@"kml"];
-   // NSURL *url = [NSURL fileURLWithPath:path];
+    // NSString *path = [[NSBundle mainBundle] pathForResource:@"aaa" ofType:@"kml"];
+    // NSURL *url = [NSURL fileURLWithPath:path];
     //    [self loadKMLAtURL:url];
-
+    
     
     
 }
@@ -120,18 +120,13 @@ int lat2tiley(double lat, int z)
     MapLayer *mapLayer = [MapLayer activeMapLayer];
     if (mapLayer) {
         NSLog(@"active map: %@", mapLayer.o_title);
-        self.mapBasicLayerOverlay = [[MOBTileOverlay alloc] initWithURLTemplate:mapLayer.o_urlTile]; // (2)
+        self.mapBasicLayerOverlay = [[MOBTileOverlay alloc] initWithURLTemplate:mapLayer.o_urlTile amdWithId:mapLayer.o_id]; // (2)
         self.mapBasicLayerOverlay.canReplaceMapContent = YES;					       // (3)
         [self.mapView addOverlay:self.mapBasicLayerOverlay level:MKOverlayLevelAboveLabels];	       // (4)
     }
     
     [self.fetchedResultsController performFetch:nil];
     [self reloadMap];
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"KMLViewerDidReceiveNewURL" object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -215,47 +210,106 @@ int lat2tiley(double lat, int z)
 }
 
 - (IBAction)actionDownload:(UIBarButtonItem *)sender {
+    //TODO: tato metoda by mela byt soucasti MapLayer
+    
+    //TODO: mela by byt moznost to zastavit - operationqu
+    MapLayer *mapLayer = [MapLayer activeMapLayer];
+    if (!mapLayer) {
+        return;
+    }
+   // [sender setEnabled:NO];
+    
+    NSLog(@"active map: %@", mapLayer.o_title);
+
+    
+
     
     
-    MKCoordinateRegion region = self.mapView.region;
-    CLLocationCoordinate2D center = region.center;
-    CLLocationCoordinate2D northWestCorner, southEastCorner;
-    northWestCorner.latitude  = center.latitude  + (region.span.latitudeDelta  / 2.0);
-    northWestCorner.longitude = center.longitude - (region.span.longitudeDelta / 2.0);
-    southEastCorner.latitude  = center.latitude  - (region.span.latitudeDelta  / 2.0);
-    southEastCorner.longitude = center.longitude + (region.span.longitudeDelta / 2.0);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
     
-    
-    
-    for (NSUInteger zoom=1; zoom<16; zoom++) {
-        int x1 = long2tilex(northWestCorner.longitude, zoom);
-        int x2 = long2tilex(southEastCorner.longitude, zoom);
-        int y1 = lat2tiley(northWestCorner.latitude, zoom);
-        int y2 = lat2tiley(southEastCorner.latitude, zoom);
-        NSLog(@"zoom %i x: %i - %i = %i y: %i - %i = %i",zoom,x1,x2,x1-x2,y1,y2,y1-y2);
+    dispatch_async(queue, ^{
+
         
-        for (NSUInteger y = y1; y <= y2; y++) {
-            for (NSUInteger x = x1; x <= x2; x++) {
-                
-                
-                
-                NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://tile.openstreetmap.org/%i/%i/%i.png",zoom, x, y]]];
-                [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+        
+        
+        MKCoordinateRegion region = self.mapView.region;
+        CLLocationCoordinate2D center = region.center;
+        CLLocationCoordinate2D northWestCorner, southEastCorner;
+        northWestCorner.latitude  = center.latitude  + (region.span.latitudeDelta  / 2.0);
+        northWestCorner.longitude = center.longitude - (region.span.longitudeDelta / 2.0);
+        southEastCorner.latitude  = center.latitude  - (region.span.latitudeDelta  / 2.0);
+        southEastCorner.longitude = center.longitude + (region.span.longitudeDelta / 2.0);
+        
+        
+        NSUInteger maxZoom = 20;
+        NSUInteger tilesAll =0;
+        for (NSUInteger zoom=1; zoom<maxZoom; zoom++) {
+            int x1 = long2tilex(northWestCorner.longitude, zoom);
+            int x2 = long2tilex(southEastCorner.longitude, zoom);
+            int y1 = lat2tiley(northWestCorner.latitude, zoom);
+            int y2 = lat2tiley(southEastCorner.latitude, zoom);
+            
+            tilesAll += (x2-x1) * (y2-y1) * maxZoom;
+        }
+        
+        
+        NSUInteger tilesDone = 0;
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+        
+        for (NSUInteger zoom=1; zoom<maxZoom; zoom++) {
+            int x1 = long2tilex(northWestCorner.longitude, zoom);
+            int x2 = long2tilex(southEastCorner.longitude, zoom);
+            int y1 = lat2tiley(northWestCorner.latitude, zoom);
+            int y2 = lat2tiley(southEastCorner.latitude, zoom);
+            
+            NSLog(@"zoom %i x: %i - %i = %i y: %i - %i = %i",zoom,x1,x2,x1-x2,y1,y2,y1-y2);
+            
+            
+            for (NSUInteger y = y1; y <= y2; y++) {
+                for (NSUInteger x = x1; x <= x2; x++) {
+                    tilesDone++;
                     
+                    NSString *urlString = [[[mapLayer.o_urlTile stringByReplacingOccurrencesOfString:@"{x}" withString:[NSString stringWithFormat:@"%i", x]] stringByReplacingOccurrencesOfString:@"{y}" withString:[NSString stringWithFormat:@"%i", y]] stringByReplacingOccurrencesOfString:@"{z}" withString:[NSString stringWithFormat:@"%i", zoom]];
+
                     
-                    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-                    NSString *pathFile =  [basePath stringByAppendingString:[NSString stringWithFormat:@"/map/%d-%d-%d.png", zoom, x, y]];
+                    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
+                    if (!data) {
+                        NSLog(@"err data %@", urlString);
+       //                 return ;
+                    }
+   
+                    NSString *pathFile =  [basePath stringByAppendingString:[NSString stringWithFormat:@"/map/%@/%d-%d-%d.png", mapLayer.o_id,zoom, x, y]];
                     
                     NSError *error;
                     [data writeToFile:pathFile options:NSDataWritingAtomic error:&error];
                     if (error) {
                         NSLog(@"error %@", [error debugDescription]);
+                        return ;
                     }
-                }];
+                }
             }
         }
-    }
+        
+
+        
+        
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            // Update UI
+            // Example:
+            // self.myLabel.text = result;
+        });
+    });
+    
+    
+    
+    
+    
+    
+    
 }
 
 
@@ -384,7 +438,7 @@ int lat2tiley(double lat, int z)
 {
     NSMutableArray *predicates = @[].mutableCopy;
     [predicates addObject:[NSPredicate predicateWithFormat:@"layer.o_isActive = YES"]];
-
+    
     if ([searchBar.text length]) {
         [predicates addObject: [NSPredicate predicateWithFormat:@"o_title BEGINSWITH[cd] %@ AND layer.o_isActive = YES", searchBar.text]];
     }
@@ -424,7 +478,7 @@ int lat2tiley(double lat, int z)
     [self.navigationItem.rightBarButtonItem setTitle:@"Maps"];
     
     if (!self.tableViewSearch.indexPathForSelectedRow) {
-         [self reloadMap];
+        [self reloadMap];
     }
 }
 

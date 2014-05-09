@@ -21,13 +21,13 @@
 
 + (instancetype)layerWithId:(NSString *)xid
 {
-   return [[MOBDataManager sharedManager] createEntity:@"FeaturesLayer" withIdName:@"o_id" withIdValue:xid];
+    return [[MOBDataManager sharedManager] createEntity:@"FeaturesLayer" withIdName:@"o_id" withIdValue:xid];
 }
 
 + (RACSignal *)reloadData
 {
     return  [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
-              [subscriber sendNext:nil];
+        [subscriber sendNext:nil];
         [subscriber sendCompleted];
         
         return [RACDisposable disposableWithBlock:^{
