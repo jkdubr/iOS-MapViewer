@@ -13,7 +13,7 @@
 
 #import "KPTreeController.h"
 
-@interface MOBMapViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate,KPTreeControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, NSFetchedResultsControllerDelegate>
+@interface MOBMapViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate,KPTreeControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, NSFetchedResultsControllerDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 

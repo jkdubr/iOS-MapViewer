@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@import MapKit;
+
+
 
 @interface MapLayer : NSManagedObject<MOBManagedObjectSerialization>
 
@@ -26,6 +29,17 @@
 + (instancetype) activeMapLayer;
 
 - (void) selectMapLayer:(BOOL) active;
+
+- (NSURL *) urlTileAtX: (NSUInteger) x atY:(NSUInteger) y atZoom:(NSUInteger) zoom;
+
+- (RACSignal *) cacheDownloadRegion: (MKCoordinateRegion) region zoomMin:(NSUInteger) zoomMin zoomMax: (NSUInteger) zoomMax;
+- (RACSignal *) cacheReset;
+- (RACSignal *) cacheStop;
+- (RACSignal *) cacheStart;
+- (RACSignal *) cacheSize;
+- (NSString *) cacheMapPath;
+- (NSString *) cacheMapPath:(MKTileOverlayPath)path;
+
 @end
 
 @interface MapLayer (CoreDataGeneratedAccessors)

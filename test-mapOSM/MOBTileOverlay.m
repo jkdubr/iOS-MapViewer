@@ -8,6 +8,8 @@
 
 #import "MOBTileOverlay.h"
 
+#import "MapLayer.h"
+
 @interface MOBTileOverlay  ()
 
 @property NSCache *cache;
@@ -17,30 +19,12 @@
 
 @implementation MOBTileOverlay
 
-- (id)initWithURLTemplate:(NSString *)URLTemplate amdWithId:(NSString *) xid
+- (id)initWithMapLayer:(MapLayer *)mapLayer
 {
-    if (self = [self initWithURLTemplate:URLTemplate]) {
-        self.o_id = xid;
-        if (!self.o_id) {
-            self.o_id = @"default";
-        }
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-        NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/map/%@", self.o_id]];
-        
-        if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
-            [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:NULL]; //Create folder
-        
+    if (self = [self initWithURLTemplate:mapLayer.o_urlTile]) {
+        _mapLayer = mapLayer;
     }
     return self;
-}
-
-- (NSString *) cacheMapPath:(MKTileOverlayPath)path
-{
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-    return [basePath stringByAppendingString:[NSString stringWithFormat:@"/map/%@/%d-%d-%d.png",self.o_id, path.z, path.x, path.y]];
 }
 
 - (void)loadTileAtPath:(MKTileOverlayPath)path result:(void (^)(NSData *data, NSError *error))result
@@ -50,7 +34,7 @@
     }
     
     
-    NSString *cachePath = [self cacheMapPath:path];
+   __block NSString *cachePath = [self.mapLayer cacheMapPath:path];
     
     NSData *cachedData = [NSData dataWithContentsOfFile:cachePath];
     if (cachedData) {
@@ -61,9 +45,9 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:[self URLForTilePath:path]];
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             
-            NSString *pathFile = [self cacheMapPath:path];
+
             NSError *error;
-            [data writeToFile:pathFile options:NSDataWritingAtomic error:&error];
+            [data writeToFile:cachePath options:NSDataWritingAtomic error:&error];
 //            if (error) {
 //                NSLog(@"error %@", [error debugDescription]);
 //            }            

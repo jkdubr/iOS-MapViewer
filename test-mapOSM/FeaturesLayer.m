@@ -27,6 +27,24 @@
 + (RACSignal *)reloadData
 {
     return  [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
+        
+        NSArray *temp = @[
+                          @{
+                              @"title" : @"My pois",
+                              @"id" : @"my"
+                              }
+                          ];
+        
+        //
+        
+        for (NSDictionary *dic in temp) {
+            FeaturesLayer *mapLayer = [FeaturesLayer layerWithId:dic[@"id"]];
+            [mapLayer setO_title:dic[@"title"]];
+            [mapLayer setO_isActive:YES];
+            [mapLayer managedObjectPopulate:dic];
+        }
+        [[MOBDataManager sharedManager] saveContext];
+        
         [subscriber sendNext:nil];
         [subscriber sendCompleted];
         

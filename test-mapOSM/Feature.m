@@ -38,4 +38,12 @@
 {
     return CLLocationCoordinate2DMake(self.o_lat, self.o_lon);
 }
+
+- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate
+{
+    self.o_lat = newCoordinate.latitude;
+    self.o_lon = newCoordinate.longitude;
+    NSLog(@"new %@ %@",@(self.o_lat), @(self.o_lon));
+}
+
 @end

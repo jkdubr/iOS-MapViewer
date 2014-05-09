@@ -33,14 +33,12 @@
 @property(nonatomic, strong) MOBTileOverlay *mapBasicLayerOverlay;
 
 - (void)loadKMLAtURL:(NSURL *)url;
-- (void)didReceiveNewURL:(NSNotification *)notification;
 
 - (IBAction)barButtonRightTouched:(id)sender;
 - (IBAction)barButtonLeftTouched:(id)sender;
 - (void)searchBarDismiss;
 
 - (void) reloadMap;
-
 
 @end
 
@@ -60,8 +58,6 @@ int lat2tiley(double lat, int z)
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNewURL:) name:@"MapitoViewerDidReceiveNewURL" object:nil];
     
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Feature"];
@@ -120,7 +116,7 @@ int lat2tiley(double lat, int z)
     MapLayer *mapLayer = [MapLayer activeMapLayer];
     if (mapLayer) {
         NSLog(@"active map: %@", mapLayer.o_title);
-        self.mapBasicLayerOverlay = [[MOBTileOverlay alloc] initWithURLTemplate:mapLayer.o_urlTile amdWithId:mapLayer.o_id]; // (2)
+        self.mapBasicLayerOverlay = [[MOBTileOverlay alloc] initWithMapLayer:mapLayer];
         self.mapBasicLayerOverlay.canReplaceMapContent = YES;					       // (3)
         [self.mapView addOverlay:self.mapBasicLayerOverlay level:MKOverlayLevelAboveLabels];	       // (4)
     }
@@ -145,6 +141,39 @@ int lat2tiley(double lat, int z)
 
 
 #pragma mark - user actions
+
+- (IBAction)actionCreatePin:(UIBarButtonItem *)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Add pin" message:@"Name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
+    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [alert show];
+}
+
+/*
+ - (IBAction) handleDoubleTapGesture:(UIGestureRecognizer*)sender
+ {
+ NSLog(@"double");
+ }
+ -(void)handleLongPressGesture:(UIGestureRecognizer*)sender
+ {
+ NSLog(@"touch long");
+ // This is important if you only want to receive one tap and hold event
+ if (sender.state == UIGestureRecognizerStateEnded)
+ {
+ [self.mapView removeGestureRecognizer:sender];
+ }
+ else
+ {
+ // Here we get the CGPoint for the touch and convert it to latitude and longitude coordinates to display on the map
+ CGPoint point = [sender locationInView:self.mapView];
+ CLLocationCoordinate2D locCoord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
+ // Then all you have to do is create the annotation and add it to the map
+ Feature *feature = [Feature feature];
+ [feature setO_lat:locCoord.latitude];
+ [feature setO_lon:locCoord.longitude];
+ [self.mapView addAnnotation:feature];
+ }
+ }
+ */
 - (void)barButtonLeftTouched:(id)sender
 {
     [self performSegueWithIdentifier:@"toLayers" sender:nil];
@@ -210,106 +239,22 @@ int lat2tiley(double lat, int z)
 }
 
 - (IBAction)actionDownload:(UIBarButtonItem *)sender {
-    //TODO: tato metoda by mela byt soucasti MapLayer
     
-    //TODO: mela by byt moznost to zastavit - operationqu
     MapLayer *mapLayer = [MapLayer activeMapLayer];
+    
     if (!mapLayer) {
         return;
     }
-   // [sender setEnabled:NO];
+    [sender setEnabled:NO];
     
     NSLog(@"active map: %@", mapLayer.o_title);
-
     
-
-    
-    
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
-    
-    dispatch_async(queue, ^{
-
-        
-        
-        
-        
-        MKCoordinateRegion region = self.mapView.region;
-        CLLocationCoordinate2D center = region.center;
-        CLLocationCoordinate2D northWestCorner, southEastCorner;
-        northWestCorner.latitude  = center.latitude  + (region.span.latitudeDelta  / 2.0);
-        northWestCorner.longitude = center.longitude - (region.span.longitudeDelta / 2.0);
-        southEastCorner.latitude  = center.latitude  - (region.span.latitudeDelta  / 2.0);
-        southEastCorner.longitude = center.longitude + (region.span.longitudeDelta / 2.0);
-        
-        
-        NSUInteger maxZoom = 20;
-        NSUInteger tilesAll =0;
-        for (NSUInteger zoom=1; zoom<maxZoom; zoom++) {
-            int x1 = long2tilex(northWestCorner.longitude, zoom);
-            int x2 = long2tilex(southEastCorner.longitude, zoom);
-            int y1 = lat2tiley(northWestCorner.latitude, zoom);
-            int y2 = lat2tiley(southEastCorner.latitude, zoom);
-            
-            tilesAll += (x2-x1) * (y2-y1) * maxZoom;
-        }
-        
-        
-        NSUInteger tilesDone = 0;
-        
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-        
-        for (NSUInteger zoom=1; zoom<maxZoom; zoom++) {
-            int x1 = long2tilex(northWestCorner.longitude, zoom);
-            int x2 = long2tilex(southEastCorner.longitude, zoom);
-            int y1 = lat2tiley(northWestCorner.latitude, zoom);
-            int y2 = lat2tiley(southEastCorner.latitude, zoom);
-            
-            NSLog(@"zoom %i x: %i - %i = %i y: %i - %i = %i",zoom,x1,x2,x1-x2,y1,y2,y1-y2);
-            
-            
-            for (NSUInteger y = y1; y <= y2; y++) {
-                for (NSUInteger x = x1; x <= x2; x++) {
-                    tilesDone++;
-                    
-                    NSString *urlString = [[[mapLayer.o_urlTile stringByReplacingOccurrencesOfString:@"{x}" withString:[NSString stringWithFormat:@"%i", x]] stringByReplacingOccurrencesOfString:@"{y}" withString:[NSString stringWithFormat:@"%i", y]] stringByReplacingOccurrencesOfString:@"{z}" withString:[NSString stringWithFormat:@"%i", zoom]];
-
-                    
-                    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
-                    if (!data) {
-                        NSLog(@"err data %@", urlString);
-       //                 return ;
-                    }
-   
-                    NSString *pathFile =  [basePath stringByAppendingString:[NSString stringWithFormat:@"/map/%@/%d-%d-%d.png", mapLayer.o_id,zoom, x, y]];
-                    
-                    NSError *error;
-                    [data writeToFile:pathFile options:NSDataWritingAtomic error:&error];
-                    if (error) {
-                        NSLog(@"error %@", [error debugDescription]);
-                        return ;
-                    }
-                }
-            }
-        }
-        
-
-        
-        
-        
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            // Update UI
-            // Example:
-            // self.myLabel.text = result;
-        });
-    });
-    
-    
-    
-    
-    
-    
-    
+    [[mapLayer cacheDownloadRegion:self.mapView.region zoomMin:3 zoomMax:20] subscribeNext:^(id x){
+        NSLog(@"next");
+    } completed:^(void){
+        [sender setEnabled:YES];
+        NSLog(@"hotovo");
+    }];
 }
 
 
@@ -329,10 +274,21 @@ int lat2tiley(double lat, int z)
                                                                        cluster.radius * 2.5f,
                                                                        cluster.radius * 2.5f)
                            animated:YES];
+        }else{
+            id<MKAnnotation> annot = cluster.annotations.anyObject;
+            if ([annot isKindOfClass:[Feature class]]) {
+                Feature *feature = (Feature *) annot;
+                if([feature.layer.o_id isEqualToString:@"my"]){
+                    [view setDraggable:YES];
+                }
+            }
         }
-    } else if ([view.annotation isKindOfClass:[MKUserLocation class]]){
-        [self.mapView setShowsUserLocation:NO];
     }
+}
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
+{
+    // [view setDraggable:NO];
 }
 
 
@@ -355,6 +311,7 @@ int lat2tiley(double lat, int z)
                 annotationView=[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewPlace];
             }
             annotationView.canShowCallout = YES;
+            
             return annotationView;
             
         }else{
@@ -376,11 +333,29 @@ int lat2tiley(double lat, int z)
     return nil;
 }
 
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
+{
+    if (newState == MKAnnotationViewDragStateEnding){
+        if([view.annotation isKindOfClass:[KPAnnotation class]]){
+            KPAnnotation *cluster = (KPAnnotation *)view.annotation;
+            
+            if(cluster.annotations.count == 1 && [cluster.annotations.anyObject isKindOfClass:[Feature class]]){
+                Feature *feature = (Feature *) cluster.annotations.anyObject;
+                [feature setCoordinate:[view.annotation coordinate]];
+                [[MOBDataManager sharedManager] saveContext];
+                
+            }
+        }
+    }
+    
+}
+
 #pragma mark - misc
 - (void)reloadMap
 {
     [self.mapView removeAnnotations:self.mapView.annotations];
     [self.treeController setAnnotations:self.fetchedResultsController.fetchedObjects];
+    
     
     // Walk the list of overlays and annotations and create a MKMapRect that
     // bounds all of them and store it into flyTo.
@@ -428,7 +403,7 @@ int lat2tiley(double lat, int z)
 
 #pragma mark - NSFetchedResultsControllerDelegate
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self reloadMap];
+    //    [self reloadMap];
 }
 
 
@@ -496,7 +471,17 @@ int lat2tiley(double lat, int z)
 {
     Feature *place = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[place coordinate].latitude longitude:[place coordinate].longitude];
+    CLLocationDistance distance = [self.mapView.userLocation.location distanceFromLocation:location];
+    NSString *subtitle;
+    if (distance >10000) {
+        subtitle = [NSString stringWithFormat:@"%.0f km",distance/1000];
+    }else{
+        subtitle = [NSString stringWithFormat:@"%.0f m",distance];
+    }
+    
     [cell.textLabel setText:place.o_title];
+    [cell.detailTextLabel setText:subtitle];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -526,5 +511,28 @@ int lat2tiley(double lat, int z)
  */
 
 
-
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==1) {
+        NSString *title = [alertView textFieldAtIndex:0].text;
+        
+        CLLocationCoordinate2D locCoord = self.mapView.centerCoordinate;
+        // Then all you have to do is create the annotation and add it to the map
+        Feature *feature = [Feature feature];
+        [feature setO_lat:locCoord.latitude];
+        [feature setO_lon:locCoord.longitude];
+        [feature setO_title:title];
+        
+        FeaturesLayer *layer = [FeaturesLayer layerWithId:@"my"];
+        [feature setLayer:layer];
+        [[MOBDataManager sharedManager] saveContext];
+        
+        if (!layer.o_isActive) {
+            layer.o_isActive=YES;
+        }
+        
+        [self.mapView addAnnotation:feature];
+    }
+}
 @end

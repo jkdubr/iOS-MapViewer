@@ -8,8 +8,12 @@
 
 #import <MapKit/MapKit.h>
 
+@class MapLayer;
+
 @interface MOBTileOverlay : MKTileOverlay
 
-@property(nonatomic, strong) NSString *o_id;
-- (id)initWithURLTemplate:(NSString *)URLTemplate amdWithId:(NSString *) xid;
+@property(nonatomic, strong, readonly) MapLayer *mapLayer;
+
+- (id)initWithMapLayer:(MapLayer *) mapLayer;
+
 @end
