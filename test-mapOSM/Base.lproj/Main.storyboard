@@ -101,8 +101,32 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Cge-jA-RVg">
+                    <connections>
+                        <action selector="handleChartTap:" destination="vXZ-lx-hvc" id="lO9-8u-CIh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="255" y="-294"/>
+        </scene>
+        <!--Track Detail View Controller-->
+        <scene sceneID="AuP-eC-sZn">
+            <objects>
+                <viewController id="cPc-Nx-o13" customClass="MOBTrackDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bvf-3a-pcq"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z2x-B5-a7n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nU8-ZB-eL2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VPB-FR-BRr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fyb-oF-Z4w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="255" y="-1058"/>
         </scene>
         <!--Features Layers Table View Controller-->
         <scene sceneID="L1z-FH-PTb">
@@ -114,7 +138,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="DiU-Ec-Ga4" detailTextLabel="0kV-nV-0M5" style="IBUITableViewCellStyleValue1" id="MTB-k0-5hI">
-                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MTB-k0-5hI" id="NYh-ME-2Rk">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -164,7 +188,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="wXP-4q-bVp" detailTextLabel="SFS-r8-p2v" style="IBUITableViewCellStyleValue1" id="UNe-EM-oxk">
-                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UNe-EM-oxk" id="LMw-da-z6E">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -265,7 +289,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Kng-re-sjA"/>
+                        <segue destination="cPc-Nx-o13" kind="relationship" relationship="rootViewController" id="qWQ-2k-9Qx"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EdI-Gr-Yyb" userLabel="First Responder" sceneMemberID="firstResponder"/>

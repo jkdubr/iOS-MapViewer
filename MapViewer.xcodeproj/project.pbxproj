@@ -29,7 +29,11 @@
 		68B1F5E4191BF8E100C18C8A /* Feature.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5E3191BF8E100C18C8A /* Feature.m */; };
 		68B1F5E7191BF8E100C18C8A /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5E6191BF8E100C18C8A /* Tag.m */; };
 		68B1F5EA191BF8E100C18C8A /* FeaturesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5E9191BF8E100C18C8A /* FeaturesLayer.m */; };
-		68B1F5ED191BF8E100C18C8A /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5EC191BF8E100C18C8A /* Track.m */; };
+		68B1F5ED191BF8E100C18C8A /* MOBTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5EC191BF8E100C18C8A /* MOBTrack.m */; };
+		68B50615191F3E7C0058AB37 /* track.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 68B50614191F3E7C0058AB37 /* track.gpx */; };
+		68B50675191FA8F90061095B /* MOBGraphLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B50674191FA8F90061095B /* MOBGraphLineView.m */; };
+		68B50678191FA9AE0061095B /* MOBTrackDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B50677191FA9AE0061095B /* MOBTrackDetailViewController.m */; };
+		68B5067B191FB3EB0061095B /* MOBTrackPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B5067A191FB3EB0061095B /* MOBTrackPoint.m */; };
 		68C28A3F191C076300638A18 /* MOBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A3E191C076300638A18 /* MOBConstants.m */; };
 		68C28A42191C0E5300638A18 /* MOBMapLayersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A41191C0E5300638A18 /* MOBMapLayersTableViewController.m */; };
 		68C28A45191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A44191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.m */; };
@@ -84,8 +88,15 @@
 		68B1F5E6191BF8E100C18C8A /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		68B1F5E8191BF8E100C18C8A /* FeaturesLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeaturesLayer.h; sourceTree = "<group>"; };
 		68B1F5E9191BF8E100C18C8A /* FeaturesLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeaturesLayer.m; sourceTree = "<group>"; };
-		68B1F5EB191BF8E100C18C8A /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
-		68B1F5EC191BF8E100C18C8A /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
+		68B1F5EB191BF8E100C18C8A /* MOBTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBTrack.h; sourceTree = "<group>"; };
+		68B1F5EC191BF8E100C18C8A /* MOBTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBTrack.m; sourceTree = "<group>"; };
+		68B50614191F3E7C0058AB37 /* track.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = track.gpx; sourceTree = "<group>"; };
+		68B50673191FA8F90061095B /* MOBGraphLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBGraphLineView.h; sourceTree = "<group>"; };
+		68B50674191FA8F90061095B /* MOBGraphLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBGraphLineView.m; sourceTree = "<group>"; };
+		68B50676191FA9AE0061095B /* MOBTrackDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBTrackDetailViewController.h; sourceTree = "<group>"; };
+		68B50677191FA9AE0061095B /* MOBTrackDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBTrackDetailViewController.m; sourceTree = "<group>"; };
+		68B50679191FB3EB0061095B /* MOBTrackPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBTrackPoint.h; sourceTree = "<group>"; };
+		68B5067A191FB3EB0061095B /* MOBTrackPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBTrackPoint.m; sourceTree = "<group>"; };
 		68C28A3D191C076300638A18 /* MOBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBConstants.h; sourceTree = "<group>"; };
 		68C28A3E191C076300638A18 /* MOBConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBConstants.m; sourceTree = "<group>"; };
 		68C28A40191C0E5300638A18 /* MOBMapLayersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBMapLayersTableViewController.h; sourceTree = "<group>"; };
@@ -179,6 +190,7 @@
 		68821AE31914D508009927DB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				68B50614191F3E7C0058AB37 /* track.gpx */,
 				68C28A3D191C076300638A18 /* MOBConstants.h */,
 				68C28A3E191C076300638A18 /* MOBConstants.m */,
 				68B1F5D4191BE91400C18C8A /* aaa.kml */,
@@ -211,6 +223,8 @@
 		68B1F5C7191BB9D000C18C8A /* map */ = {
 			isa = PBXGroup;
 			children = (
+				68B50673191FA8F90061095B /* MOBGraphLineView.h */,
+				68B50674191FA8F90061095B /* MOBGraphLineView.m */,
 				68B1F5D1191BE88500C18C8A /* KMLParser.h */,
 				68B1F5D2191BE88500C18C8A /* KMLParser.m */,
 				68B1F5CC191BBA4700C18C8A /* MOBTileOverlay.h */,
@@ -223,8 +237,8 @@
 			isa = PBXGroup;
 			children = (
 				68B1F5DC191BF53500C18C8A /* Model.xcdatamodeld */,
-				68B1F5EB191BF8E100C18C8A /* Track.h */,
-				68B1F5EC191BF8E100C18C8A /* Track.m */,
+				68B1F5EB191BF8E100C18C8A /* MOBTrack.h */,
+				68B1F5EC191BF8E100C18C8A /* MOBTrack.m */,
 				68B1F5E8191BF8E100C18C8A /* FeaturesLayer.h */,
 				68B1F5E9191BF8E100C18C8A /* FeaturesLayer.m */,
 				68B1F5E5191BF8E100C18C8A /* Tag.h */,
@@ -233,6 +247,8 @@
 				68B1F5E3191BF8E100C18C8A /* Feature.m */,
 				68B1F5DF191BF8E000C18C8A /* MapLayer.h */,
 				68B1F5E0191BF8E000C18C8A /* MapLayer.m */,
+				68B50679191FB3EB0061095B /* MOBTrackPoint.h */,
+				68B5067A191FB3EB0061095B /* MOBTrackPoint.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -254,6 +270,8 @@
 				68C28A41191C0E5300638A18 /* MOBMapLayersTableViewController.m */,
 				68C28A43191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.h */,
 				68C28A44191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.m */,
+				68B50676191FA9AE0061095B /* MOBTrackDetailViewController.h */,
+				68B50677191FA9AE0061095B /* MOBTrackDetailViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -351,6 +369,7 @@
 			files = (
 				68B1F5D5191BE91400C18C8A /* aaa.kml in Resources */,
 				68821AF51914D508009927DB /* Images.xcassets in Resources */,
+				68B50615191F3E7C0058AB37 /* track.gpx in Resources */,
 				68821AE71914D508009927DB /* InfoPlist.strings in Resources */,
 				68821AF01914D508009927DB /* Main.storyboard in Resources */,
 			);
@@ -420,19 +439,22 @@
 				68B1F5E1191BF8E000C18C8A /* MapLayer.m in Sources */,
 				68B1F5E4191BF8E100C18C8A /* Feature.m in Sources */,
 				68C28A4D191C4D1000638A18 /* MOBAccount.m in Sources */,
+				68B5067B191FB3EB0061095B /* MOBTrackPoint.m in Sources */,
 				68821AE91914D508009927DB /* main.m in Sources */,
 				68C28A48191C2E9200638A18 /* Test.m in Sources */,
-				68B1F5ED191BF8E100C18C8A /* Track.m in Sources */,
+				68B1F5ED191BF8E100C18C8A /* MOBTrack.m in Sources */,
 				68C28A45191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.m in Sources */,
 				68C28A4E191C4D1000638A18 /* MOBDataManager.m in Sources */,
 				68B1F5CE191BBA4700C18C8A /* MOBTileOverlay.m in Sources */,
 				68C28A42191C0E5300638A18 /* MOBMapLayersTableViewController.m in Sources */,
 				68C28A3F191C076300638A18 /* MOBConstants.m in Sources */,
 				68B1F5EA191BF8E100C18C8A /* FeaturesLayer.m in Sources */,
+				68B50678191FA9AE0061095B /* MOBTrackDetailViewController.m in Sources */,
 				68B1F5E7191BF8E100C18C8A /* Tag.m in Sources */,
 				68B1F5D3191BE88500C18C8A /* KMLParser.m in Sources */,
 				68B1F5DE191BF53500C18C8A /* Model.xcdatamodeld in Sources */,
 				68B1F5DB191BF51E00C18C8A /* MOBMapViewController.m in Sources */,
+				68B50675191FA8F90061095B /* MOBGraphLineView.m in Sources */,
 				68821AED1914D508009927DB /* MOBAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

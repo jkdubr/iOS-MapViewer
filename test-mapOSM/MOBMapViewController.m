@@ -15,8 +15,9 @@
 #import "FeaturesLayer.h"
 #import "Feature.h"
 
-#import "KMLParser.h"
 #import "MOBTileOverlay.h"
+
+
 
 @interface MOBMapViewController ()
 
@@ -58,7 +59,7 @@ int lat2tiley(double lat, int z)
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+ 
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Feature"];
     NSSortDescriptor *descriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"o_title" ascending:NO];
@@ -134,6 +135,11 @@ int lat2tiley(double lat, int z)
 {
     if ([overlay isKindOfClass:[MKTileOverlay class]]) {
         return [[MKTileOverlayRenderer alloc] initWithTileOverlay:overlay];
+    } else if ([overlay isKindOfClass:[MKPolyline class]]) {
+        MKPolyline *route = overlay;
+        MKPolylineRenderer *routeRenderer = [[MKPolylineRenderer alloc] initWithPolyline:route];
+        routeRenderer.strokeColor = [UIColor blueColor];
+        return routeRenderer;
     }
     
     return nil;
@@ -141,6 +147,12 @@ int lat2tiley(double lat, int z)
 
 
 #pragma mark - user actions
+- (IBAction)handleChartTap:(UITapGestureRecognizer *)sender {
+    CGPoint location = [sender locationInView:[sender.view self]];
+    CGFloat x = location.x;
+    CGFloat percent = x / sender.view.frame.size.width;
+    NSLog(@"testing = %f %f", (double)x, (double) percent);
+}
 
 - (IBAction)actionCreatePin:(UIBarButtonItem *)sender {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Add pin" message:@"Name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
@@ -245,7 +257,7 @@ int lat2tiley(double lat, int z)
     if (!mapLayer) {
         return;
     }
-    [sender setEnabled:NO];
+    // [sender setEnabled:NO];
     
     NSLog(@"active map: %@", mapLayer.o_title);
     
@@ -535,4 +547,5 @@ int lat2tiley(double lat, int z)
         [self.mapView addAnnotation:feature];
     }
 }
+
 @end

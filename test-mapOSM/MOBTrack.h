@@ -11,13 +11,13 @@
 
 @class Tag;
 
-@interface Track : NSManagedObject
+@interface MOBTrack : NSManagedObject
 
 @property (nonatomic, retain) id o_points;
 @property (nonatomic, retain) NSSet *tag;
 @end
 
-@interface Track (CoreDataGeneratedAccessors)
+@interface MOBTrack (CoreDataGeneratedAccessors)
 
 - (void)addTagObject:(Tag *)value;
 - (void)removeTagObject:(Tag *)value;

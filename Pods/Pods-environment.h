@@ -60,6 +60,12 @@
 #define COCOAPODS_VERSION_MINOR_CrashlyticsFramework 1
 #define COCOAPODS_VERSION_PATCH_CrashlyticsFramework 7
 
+// GPXParser
+#define COCOAPODS_POD_AVAILABLE_GPXParser
+#define COCOAPODS_VERSION_MAJOR_GPXParser 1
+#define COCOAPODS_VERSION_MINOR_GPXParser 0
+#define COCOAPODS_VERSION_PATCH_GPXParser 0
+
 // GoogleAnalytics-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_GoogleAnalytics_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_GoogleAnalytics_iOS_SDK 3

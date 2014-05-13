@@ -11,9 +11,11 @@
 @import MapKit;
 @import CoreLocation;
 
+#import "MOBGraphLineView.h";
+
 #import "KPTreeController.h"
 
-@interface MOBMapViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate,KPTreeControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, NSFetchedResultsControllerDelegate, UIAlertViewDelegate>
+@interface MOBMapViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate,KPTreeControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, NSFetchedResultsControllerDelegate, UIAlertViewDelegate, MOBGraphLineDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 

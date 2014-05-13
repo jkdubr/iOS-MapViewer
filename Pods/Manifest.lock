@@ -22,6 +22,7 @@ PODS:
     - NSData+Base64 (~> 1.0)
   - CrashlyticsFramework (2.1.7)
   - GoogleAnalytics-iOS-SDK (3.0.6)
+  - GPXParser (1.0)
   - JSMessagesViewController (4.0.4):
     - JSQSystemSoundPlayer
   - JSQSystemSoundPlayer (1.5.0)
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.1.0)
   - CrashlyticsFramework
   - GoogleAnalytics-iOS-SDK
+  - GPXParser
   - JSMessagesViewController
   - kingpin
   - ReactiveCocoa
@@ -61,6 +63,7 @@ SPEC CHECKSUMS:
   cocoa-oauth: d26914bf977e40b881ba0414e7da74d791d82a8f
   CrashlyticsFramework: 569d2b1c71922aa480bfdc55df4c86aedf7b215c
   GoogleAnalytics-iOS-SDK: 16dfcc0c4491148bf372edc85a8470cc405ffb72
+  GPXParser: 223829d48543e06237c575922450b7d0c159b74d
   JSMessagesViewController: 6b59dec2b679ee6a8c6d9c9f1d5d9748abf4c05c
   JSQSystemSoundPlayer: 6dbac8dcc33e3add6facb3e59451a0249aece17d
   kingpin: 30603b821f2bf4f35642d83ead2551e3990b3c1f

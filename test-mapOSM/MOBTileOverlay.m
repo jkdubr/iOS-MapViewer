@@ -12,8 +12,7 @@
 
 @interface MOBTileOverlay  ()
 
-@property NSCache *cache;
-@property NSOperationQueue *operationQueue;
+//@property NSCache *cache;
 
 @end
 
@@ -23,6 +22,7 @@
 {
     if (self = [self initWithURLTemplate:mapLayer.o_urlTile]) {
         _mapLayer = mapLayer;
+//        self.cache = [[NSCache alloc] init];
     }
     return self;
 }
@@ -33,26 +33,43 @@
         return;
     }
     
+    __block NSString *cachePath = [self.mapLayer cacheMapPath:path];
     
-   __block NSString *cachePath = [self.mapLayer cacheMapPath:path];
-    
-    NSData *cachedData = [NSData dataWithContentsOfFile:cachePath];
+    /*
+    NSData *cachedData = [self.cache objectForKey:cachePath];
     if (cachedData) {
+      //  NSLog(@"cache memory");
         result(cachedData, nil);
-    }
-    
-
-        NSURLRequest *request = [NSURLRequest requestWithURL:[self URLForTilePath:path]];
-        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    }else{
+        */
+        NSData *cachedData = [NSData dataWithContentsOfFile:cachePath];
+        if (cachedData) {
+      //      [self.cache setObject:cachedData forKey:cachePath];
+         //   NSLog(@"cache file");
+            result(cachedData, nil);
+        }else{
             
+            NSURLRequest *request = [NSURLRequest requestWithURL:[self URLForTilePath:path]];
+            [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                
+                
+                NSError *error;
+                [data writeToFile:cachePath options:NSDataWritingAtomic error:&error];
+                //            if (error) {
+                //                NSLog(@"error %@", [error debugDescription]);
+                //            }
 
-            NSError *error;
-            [data writeToFile:cachePath options:NSDataWritingAtomic error:&error];
-//            if (error) {
-//                NSLog(@"error %@", [error debugDescription]);
-//            }            
-            result(data, connectionError);
-        }];
+                /*     if (data) {
+                    [self.cache setObject:data forKey:cachePath];
+                }
+*/
+                 
+              //  NSLog(@"cache url");
+                
+                result(data, connectionError);
+            }];
+        }
+  //  }
 }
 
 @end

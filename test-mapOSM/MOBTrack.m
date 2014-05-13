@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Mobera. All rights reserved.
 //
 
-#import "Track.h"
+#import "MOBTrack.h"
 #import "Tag.h"
 
 
-@implementation Track
+@implementation MOBTrack
 
 @dynamic o_points;
 @dynamic tag;
