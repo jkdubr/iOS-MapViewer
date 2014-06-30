@@ -17,6 +17,7 @@
 
 #import "MOBTileOverlay.h"
 
+#import "MOBLocationTracker.h"
 
 
 @interface MOBMapViewController ()
@@ -41,20 +42,14 @@
 
 - (void) reloadMap;
 
+@property(nonatomic, strong) MOBLocationTracker *locationTracker;
+
 @end
 
 @implementation MOBMapViewController
 
 
-int long2tilex(double lon, int z)
-{
-	return (int)(floor((lon + 180.0) / 360.0 * pow(2.0, z)));
-}
 
-int lat2tiley(double lat, int z)
-{
-	return (int)(floor((1.0 - log( tan(lat * M_PI/180.0) + 1.0 / cos(lat * M_PI/180.0)) / M_PI) / 2.0 * pow(2.0, z)));
-}
 
 - (void)viewDidLoad
 {
@@ -101,7 +96,7 @@ int lat2tiley(double lat, int z)
     // NSURL *url = [NSURL fileURLWithPath:path];
     //    [self loadKMLAtURL:url];
     
-    
+    self.locationTracker = [[MOBLocationTracker alloc] init];
     
 }
 
@@ -117,13 +112,15 @@ int lat2tiley(double lat, int z)
     MapLayer *mapLayer = [MapLayer activeMapLayer];
     if (mapLayer) {
         NSLog(@"active map: %@", mapLayer.o_title);
-        self.mapBasicLayerOverlay = [[MOBTileOverlay alloc] initWithMapLayer:mapLayer];
+        self.mapBasicLayerOverlay = [[MOBTileOverlay alloc] initWithURLTemplate:mapLayer.o_urlTile withTitle:mapLayer.o_title withId:mapLayer.o_id];
         self.mapBasicLayerOverlay.canReplaceMapContent = YES;					       // (3)
         [self.mapView addOverlay:self.mapBasicLayerOverlay level:MKOverlayLevelAboveLabels];	       // (4)
     }
     
     [self.fetchedResultsController performFetch:nil];
     [self reloadMap];
+    
+    [self.locationTracker start];
 }
 
 - (void)didReceiveMemoryWarning
@@ -248,6 +245,38 @@ int lat2tiley(double lat, int z)
         [self.mapView setShowsUserLocation:YES];
     }
     [self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate animated:YES];
+    
+    
+    NSURL * url = [NSURL URLWithString:@"https://api.github.com/gists"];
+    NSDictionary * params = @{
+                              @"files"  :   @{
+                                      @"mapito.geojson" :   @{
+                                              @"content"    :   [self.locationTracker geojson]
+                                              }
+                                      }
+                              };
+    
+    
+    
+    
+    [[[[MOBDataManager sharedManager] postJSON:params toURL:url] map:^id(NSDictionary * json){
+        NSString * gistId = json[@"id"];
+        NSString * link = [NSString stringWithFormat:@"http://www.gismentors.eu/geojson/#id=gist:anonymous/%@", gistId];
+        
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[link] applicationActivities:nil];
+        [self presentViewController:activityVC animated:YES completion:nil];
+        
+        
+        return link;
+    }] subscribeNext:^(id x){
+    
+    } error:^(NSError *err){
+    
+    } completed:^(void){
+    
+    }];;
+    
+    
 }
 
 - (IBAction)actionDownload:(UIBarButtonItem *)sender {
@@ -261,12 +290,16 @@ int lat2tiley(double lat, int z)
     
     NSLog(@"active map: %@", mapLayer.o_title);
     
+    [self.mapBasicLayerOverlay cacheDownloadRegion:self.mapView.region zoomMin:3 zoomMax:15];
+    
+    /*
     [[mapLayer cacheDownloadRegion:self.mapView.region zoomMin:3 zoomMax:20] subscribeNext:^(id x){
         NSLog(@"next");
     } completed:^(void){
         [sender setEnabled:YES];
         NSLog(@"hotovo");
     }];
+    */
 }
 
 

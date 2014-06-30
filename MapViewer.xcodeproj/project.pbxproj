@@ -20,7 +20,6 @@
 		68821AFE1914D508009927DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68821AE01914D508009927DB /* UIKit.framework */; };
 		68821B061914D508009927DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68821B041914D508009927DB /* InfoPlist.strings */; };
 		68821B081914D508009927DB /* test_mapOSMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68821B071914D508009927DB /* test_mapOSMTests.m */; };
-		68B1F5CE191BBA4700C18C8A /* MOBTileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5CD191BBA4700C18C8A /* MOBTileOverlay.m */; };
 		68B1F5D3191BE88500C18C8A /* KMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5D2191BE88500C18C8A /* KMLParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		68B1F5D5191BE91400C18C8A /* aaa.kml in Resources */ = {isa = PBXBuildFile; fileRef = 68B1F5D4191BE91400C18C8A /* aaa.kml */; };
 		68B1F5DB191BF51E00C18C8A /* MOBMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B1F5DA191BF51E00C18C8A /* MOBMapViewController.m */; };
@@ -37,9 +36,10 @@
 		68C28A3F191C076300638A18 /* MOBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A3E191C076300638A18 /* MOBConstants.m */; };
 		68C28A42191C0E5300638A18 /* MOBMapLayersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A41191C0E5300638A18 /* MOBMapLayersTableViewController.m */; };
 		68C28A45191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A44191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.m */; };
-		68C28A48191C2E9200638A18 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A47191C2E9200638A18 /* Test.m */; };
 		68C28A4D191C4D1000638A18 /* MOBAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A4A191C4D1000638A18 /* MOBAccount.m */; };
 		68C28A4E191C4D1000638A18 /* MOBDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C28A4C191C4D1000638A18 /* MOBDataManager.m */; };
+		68C91B3F1960C82F00646069 /* MOBTileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C91B3E1960C82F00646069 /* MOBTileOverlay.m */; };
+		68C91B491960DC5900646069 /* MOBLocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C91B481960DC5900646069 /* MOBLocationTracker.m */; };
 		D9FA0B8E1920412DB2725276 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C6C4182A784702963EF5A4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -72,8 +72,6 @@
 		68821B031914D508009927DB /* MapViewerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MapViewerTests-Info.plist"; sourceTree = "<group>"; };
 		68821B051914D508009927DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		68821B071914D508009927DB /* test_mapOSMTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = test_mapOSMTests.m; sourceTree = "<group>"; };
-		68B1F5CC191BBA4700C18C8A /* MOBTileOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBTileOverlay.h; sourceTree = "<group>"; };
-		68B1F5CD191BBA4700C18C8A /* MOBTileOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBTileOverlay.m; sourceTree = "<group>"; };
 		68B1F5D1191BE88500C18C8A /* KMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMLParser.h; sourceTree = "<group>"; };
 		68B1F5D2191BE88500C18C8A /* KMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMLParser.m; sourceTree = "<group>"; };
 		68B1F5D4191BE91400C18C8A /* aaa.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = aaa.kml; sourceTree = "<group>"; };
@@ -103,12 +101,14 @@
 		68C28A41191C0E5300638A18 /* MOBMapLayersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBMapLayersTableViewController.m; sourceTree = "<group>"; };
 		68C28A43191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBFeaturesLayersTableViewController.h; sourceTree = "<group>"; };
 		68C28A44191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBFeaturesLayersTableViewController.m; sourceTree = "<group>"; };
-		68C28A46191C2E9200638A18 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
-		68C28A47191C2E9200638A18 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		68C28A49191C4D1000638A18 /* MOBAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MOBAccount.h; path = ../../shared/Basic/MOBAccount.h; sourceTree = "<group>"; };
 		68C28A4A191C4D1000638A18 /* MOBAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MOBAccount.m; path = ../../shared/Basic/MOBAccount.m; sourceTree = "<group>"; };
 		68C28A4B191C4D1000638A18 /* MOBDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MOBDataManager.h; path = ../../shared/Basic/MOBDataManager.h; sourceTree = "<group>"; };
 		68C28A4C191C4D1000638A18 /* MOBDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MOBDataManager.m; path = ../../shared/Basic/MOBDataManager.m; sourceTree = "<group>"; };
+		68C91B3D1960C82F00646069 /* MOBTileOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MOBTileOverlay.h; path = ../../shared/Maps/MOBTileOverlay.h; sourceTree = "<group>"; };
+		68C91B3E1960C82F00646069 /* MOBTileOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MOBTileOverlay.m; path = ../../shared/Maps/MOBTileOverlay.m; sourceTree = "<group>"; };
+		68C91B471960DC5900646069 /* MOBLocationTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MOBLocationTracker.h; path = ../../shared/Maps/MOBLocationTracker.h; sourceTree = "<group>"; };
+		68C91B481960DC5900646069 /* MOBLocationTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MOBLocationTracker.m; path = ../../shared/Maps/MOBLocationTracker.m; sourceTree = "<group>"; };
 		D7E30A3F147347A5A2F07EAE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,8 +140,6 @@
 		68821AD01914D508009927DB = {
 			isa = PBXGroup;
 			children = (
-				68C28A46191C2E9200638A18 /* Test.h */,
-				68C28A47191C2E9200638A18 /* Test.m */,
 				68821AE21914D508009927DB /* test-mapOSM */,
 				68821B011914D508009927DB /* test-mapOSMTests */,
 				68821ADB1914D508009927DB /* Frameworks */,
@@ -227,8 +225,8 @@
 				68B50674191FA8F90061095B /* MOBGraphLineView.m */,
 				68B1F5D1191BE88500C18C8A /* KMLParser.h */,
 				68B1F5D2191BE88500C18C8A /* KMLParser.m */,
-				68B1F5CC191BBA4700C18C8A /* MOBTileOverlay.h */,
-				68B1F5CD191BBA4700C18C8A /* MOBTileOverlay.m */,
+				68C91B3D1960C82F00646069 /* MOBTileOverlay.h */,
+				68C91B3E1960C82F00646069 /* MOBTileOverlay.m */,
 			);
 			name = map;
 			sourceTree = "<group>";
@@ -236,6 +234,7 @@
 		68B1F5D6191BF4EB00C18C8A /* model */ = {
 			isa = PBXGroup;
 			children = (
+				68C91B391960A3FD00646069 /* test */,
 				68B1F5DC191BF53500C18C8A /* Model.xcdatamodeld */,
 				68B1F5EB191BF8E100C18C8A /* MOBTrack.h */,
 				68B1F5EC191BF8E100C18C8A /* MOBTrack.m */,
@@ -285,6 +284,15 @@
 				68C28A4C191C4D1000638A18 /* MOBDataManager.m */,
 			);
 			name = common;
+			sourceTree = "<group>";
+		};
+		68C91B391960A3FD00646069 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				68C91B471960DC5900646069 /* MOBLocationTracker.h */,
+				68C91B481960DC5900646069 /* MOBLocationTracker.m */,
+			);
+			name = test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,6 +346,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Mobera;
 				TargetAttributes = {
+					68821AD81914D508009927DB = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					68821AF91914D508009927DB = {
 						TestTargetID = 68821AD81914D508009927DB;
 					};
@@ -438,14 +453,14 @@
 			files = (
 				68B1F5E1191BF8E000C18C8A /* MapLayer.m in Sources */,
 				68B1F5E4191BF8E100C18C8A /* Feature.m in Sources */,
+				68C91B491960DC5900646069 /* MOBLocationTracker.m in Sources */,
 				68C28A4D191C4D1000638A18 /* MOBAccount.m in Sources */,
+				68C91B3F1960C82F00646069 /* MOBTileOverlay.m in Sources */,
 				68B5067B191FB3EB0061095B /* MOBTrackPoint.m in Sources */,
 				68821AE91914D508009927DB /* main.m in Sources */,
-				68C28A48191C2E9200638A18 /* Test.m in Sources */,
 				68B1F5ED191BF8E100C18C8A /* MOBTrack.m in Sources */,
 				68C28A45191C0E7E00638A18 /* MOBFeaturesLayersTableViewController.m in Sources */,
 				68C28A4E191C4D1000638A18 /* MOBDataManager.m in Sources */,
-				68B1F5CE191BBA4700C18C8A /* MOBTileOverlay.m in Sources */,
 				68C28A42191C0E5300638A18 /* MOBMapLayersTableViewController.m in Sources */,
 				68C28A3F191C076300638A18 /* MOBConstants.m in Sources */,
 				68B1F5EA191BF8E100C18C8A /* FeaturesLayer.m in Sources */,
