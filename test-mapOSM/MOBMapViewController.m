@@ -30,6 +30,9 @@
 
 
 @property(nonatomic, strong) NSFetchedResultsController * fetchedResultsController;
+/**
+ *  controller for clustering POIs
+ */
 @property(nonatomic, strong) KPTreeController * treeController;
 
 @property(nonatomic, strong) MOBTileOverlay *mapBasicLayerOverlay;
@@ -203,7 +206,7 @@
     
     MKMapSnapshotter *snapshotter = [[MKMapSnapshotter alloc] initWithOptions:options];
     
-    [snapshotter startWithQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+    [snapshotter startWithQueue:dispatch_get_main_queue()
               completionHandler:^(MKMapSnapshot *snapshot, NSError *error) {
                   if (error) {
                       NSLog(@"[Error] %@", error);

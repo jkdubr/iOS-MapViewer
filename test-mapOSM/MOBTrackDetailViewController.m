@@ -76,7 +76,6 @@
                 }
             }
             
-            NSLog(@"ppp %i %f",track.fixes.count, sum);
             if (j==0) {
                 
                 MOBGraphLineView *viewPlot = [[MOBGraphLineView alloc] initWithFrame:CGRectMake(10, 100, 300, 300)];
